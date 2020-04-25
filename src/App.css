@@ -2,7 +2,7 @@
   display: grid;
   grid-template-areas: 
     "header header"
-    "nav main";
+    "navbar main";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
@@ -12,4 +12,14 @@
 
 .main {
   grid-area: main;
+}
+
+.navbar {
+  grid-area: navbar;
+  background-color: #bbdefb;
+}
+
+.header {
+  grid-area: header;
+  background-color: #bbdefb;
 }

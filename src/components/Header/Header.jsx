@@ -3,12 +3,12 @@ import style from "./Header.module.css";
 
 const Header = () => {
   return (
-    <header className={style.header}>
+    <div className={style.head}>
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/b/be/Lineage_OS_Logo.png"
         alt=""
       />
-    </header>
+    </div>
   );
 };
 

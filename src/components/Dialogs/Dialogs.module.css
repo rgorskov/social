@@ -11,13 +11,21 @@
     padding: 5px;
 }
 
-.userDialog {
+/* .userDialog {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+} */
+
+.userDialogLink {
+    padding: 10px;
+    border-radius: 5px;
+    display: block;
+    color: #000;
+    text-decoration: none;
 }
 
-.userDialog.active {
+.userDialogLink.active {
     background-color: rgba(0,0,0,0.1);
 }
 

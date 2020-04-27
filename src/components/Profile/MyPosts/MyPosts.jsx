@@ -2,13 +2,7 @@ import React from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-let postsData = [
-  { id: 1, message: "Hello", likesCount: 10 },
-  { id: 2, message: "How are you?", likesCount: 2 },
-  { id: 3, message: "Noice", likesCount: 5 },
-];
-
-const MyPosts = () => {
+const MyPosts = ({posts}) => {
   return (
     <div>
       <h1>My posts</h1>
@@ -21,7 +15,7 @@ const MyPosts = () => {
         </div>
       </div>
       <div>
-        {postsData.map((p, i) => (
+        {posts.map((p, i) => (
           <Post
             id={p.id}
             message={p.message}

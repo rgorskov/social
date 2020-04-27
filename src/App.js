@@ -22,8 +22,8 @@ function App({state}) {
         </aside>
 
         <main className="main">
-          <Route render={ () => <Profile posts={state.posts} /> } path='/profile' />
-          <Route render={ () => <Dialogs usersDialogs={state.usersDialogs} messages={state.messages} /> } path='/dialogs' />
+          <Route render={ () => <Profile data={state.profilePage} /> } path='/profile' />
+          <Route render={ () => <Dialogs data={state.dialogsPage} /> } path='/dialogs' />
           <Route render={ () => <Settings /> } path='/settings' />
           <Route render={ () => <Music /> } path='/music' />
           <Route render={ () => <News /> } path='/news' />

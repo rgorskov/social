@@ -3,24 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-let state = {
-  posts: [
-    { id: 1, message: "Hello", likesCount: 10 },
-    { id: 2, message: "How are you?", likesCount: 2 },
-    { id: 3, message: "Noice", likesCount: 5 },
-  ],
-  usersDialogs: [
-    { id: 1, name: "Yury" },
-    { id: 2, name: "Dima" },
-    { id: 3, name: "Oleg" },
-  ],
-  messages: [
-    { id: 1, text: "Hello" },
-    { id: 2, text: "How are you?" },
-  ]
-};
-
+import state from './redux/state';
 
 ReactDOM.render(
   <React.StrictMode>

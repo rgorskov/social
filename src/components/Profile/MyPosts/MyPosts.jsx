@@ -3,15 +3,20 @@ import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = ({posts}) => {
+  let newPostRef = React.createRef();
+  let onAddPostHandler = () => {
+    alert(newPostRef.current.value);
+  };
+
   return (
     <div>
       <h1>My posts</h1>
       <div className={style.addPostBlock}>
         <div>
-          <textarea></textarea>
+          <textarea ref={newPostRef}></textarea>
         </div>
         <div>
-          <button>Add post</button>
+          <button onClick={onAddPostHandler}>Add post</button>
         </div>
       </div>
       <div>

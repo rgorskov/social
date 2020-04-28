@@ -5,6 +5,11 @@ import Message from "./Message/Message";
 
 
 const Dialogs = ({data}) => {
+  let newMessageRef = React.createRef();
+  let onSendMessageHandler = () => {
+    alert(newMessageRef.current.value);
+  };
+
   return (
     <div className={style.dialogs}>
       <div className={style.usersList}>
@@ -16,6 +21,8 @@ const Dialogs = ({data}) => {
         {data.messages.map((m, i) => (
           <Message id={m.id} text={m.text} key={i} />
         ))}
+        <textarea ref={newMessageRef}></textarea>
+        <button onClick={onSendMessageHandler}>Send Message</button>
       </div>
     </div>
   );

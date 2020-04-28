@@ -4,10 +4,10 @@ import UserDialog from "./UserDialog/UserDialog";
 import Message from "./Message/Message";
 
 
-const Dialogs = ({data}) => {
+const Dialogs = ({data, sendMessage}) => {
   let newMessageRef = React.createRef();
   let onSendMessageHandler = () => {
-    alert(newMessageRef.current.value);
+    sendMessage(newMessageRef.current.value);
   };
 
   return (

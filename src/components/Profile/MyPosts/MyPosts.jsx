@@ -2,10 +2,10 @@ import React from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = ({posts}) => {
+const MyPosts = ({posts, addPost}) => {
   let newPostRef = React.createRef();
   let onAddPostHandler = () => {
-    alert(newPostRef.current.value);
+    addPost(newPostRef.current.value);
   };
 
   return (

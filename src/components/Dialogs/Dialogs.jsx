@@ -8,6 +8,7 @@ const Dialogs = ({data, sendMessage}) => {
   let newMessageRef = React.createRef();
   let onSendMessageHandler = () => {
     sendMessage(newMessageRef.current.value);
+    newMessageRef.current.value = '';
   };
 
   return (

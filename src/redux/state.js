@@ -1,3 +1,5 @@
+import rerenderEntireTree from "../render";
+
 let state = {
   profilePage: {
     posts: [
@@ -23,12 +25,14 @@ export const addPost = (text) => {
   let id = state.profilePage.posts.reduce((max, curr) => curr.id > max ? curr.id : max, 0) + 1;
   let newPost = {id, message: text, likesCount: 0};
   state.profilePage.posts.push(newPost);
+  rerenderEntireTree(state);
 };
 
 export const sendMessage = (text) => {
   let id = state.dialogsPage.messages.reduce((max, curr) => curr.id > max ? curr.id : max, 0) + 1;
   let newMessage = {id, text};
   state.dialogsPage.messages.push(newMessage);
+  rerenderEntireTree(state);
 };
 
 export default state;

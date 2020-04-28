@@ -6,6 +6,7 @@ const MyPosts = ({posts, addPost}) => {
   let newPostRef = React.createRef();
   let onAddPostHandler = () => {
     addPost(newPostRef.current.value);
+    newPostRef.current.value = '';
   };
 
   return (

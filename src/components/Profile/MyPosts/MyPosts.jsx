@@ -2,11 +2,15 @@ import React from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = ({posts, addPost}) => {
+const MyPosts = ({posts, currentText, addPost, updatePostText}) => {
   let newPostRef = React.createRef();
+
   let onAddPostHandler = () => {
-    addPost(newPostRef.current.value);
-    newPostRef.current.value = '';
+    addPost();
+  };
+
+  let onupdatePostText = () => {
+    updatePostText(newPostRef.current.value);
   };
 
   return (
@@ -14,7 +18,7 @@ const MyPosts = ({posts, addPost}) => {
       <h1>My posts</h1>
       <div className={style.addPostBlock}>
         <div>
-          <textarea ref={newPostRef}></textarea>
+          <textarea ref={newPostRef} onChange={onupdatePostText} value={currentText} />
         </div>
         <div>
           <button onClick={onAddPostHandler}>Add post</button>

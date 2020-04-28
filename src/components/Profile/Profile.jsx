@@ -3,12 +3,12 @@ import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = ({data, addPost}) => {
+const Profile = ({data, addPost, updatePostText}) => {
   return (
     <div>
       <ProfileInfo />
       
-      <MyPosts posts={data.posts} addPost={addPost} />
+      <MyPosts posts={data.posts} currentText={data.currentText} addPost={addPost} updatePostText={updatePostText} />
       
     </div>
   );

@@ -9,7 +9,7 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import { Route } from "react-router-dom";
 
-function App({state, addPost, sendMessage}) {
+function App({state, addPost, updatePostText, sendMessage, updateMessageText}) {
   return (
     <div className="app-wrapper">
       <header className="header">
@@ -22,11 +22,11 @@ function App({state, addPost, sendMessage}) {
 
       <main className="main">
         <Route
-          render={() => <Profile data={state.profilePage} addPost={addPost} />}
+          render={() => <Profile data={state.profilePage} addPost={addPost} updatePostText={updatePostText} />}
           path="/profile"
         />
         <Route
-          render={() => <Dialogs data={state.dialogsPage} sendMessage={sendMessage} />}
+          render={() => <Dialogs data={state.dialogsPage} sendMessage={sendMessage} updateMessageText={updateMessageText} />}
           path="/dialogs"
         />
         <Route render={() => <Settings />} path="/settings" />

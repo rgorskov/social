@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Dialogs.module.css";
 import UserDialog from "./UserDialog/UserDialog";
 import Message from "./Message/Message";
-import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "./../../redux/state";
+import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "./../../redux/dialogs-reducer";
 
 
 const Dialogs = ({ data, dispatch }) => {

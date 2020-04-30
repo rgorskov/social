@@ -3,17 +3,18 @@ import style from "./Dialogs.module.css";
 import UserDialog from "./UserDialog/UserDialog";
 import Message from "./Message/Message";
 
-
-const Dialogs = ({data, sendMessage, updateMessageText}) => {
+const Dialogs = ({ data, dispatch }) => {
   let newMessageRef = React.createRef();
-  
+
   let onSendMessageHandler = () => {
-    sendMessage();
-    newMessageRef.current.value = '';
+    dispatch({ type: "SEND_MESSAGE" });
   };
 
   let onNewMessageChange = () => {
-    updateMessageText(newMessageRef.current.value);
+    dispatch({
+      type: "UPDATE_NEW_MESSAGE_TEXT",
+      text: newMessageRef.current.value,
+    });
   };
 
   return (
@@ -27,7 +28,11 @@ const Dialogs = ({data, sendMessage, updateMessageText}) => {
         {data.messages.map((m, i) => (
           <Message id={m.id} text={m.text} key={i} />
         ))}
-        <textarea ref={newMessageRef} onChange={onNewMessageChange} value={data.currentText} />
+        <textarea
+          ref={newMessageRef}
+          onChange={onNewMessageChange}
+          value={data.currentText}
+        />
         <button onClick={onSendMessageHandler}>Send Message</button>
       </div>
     </div>

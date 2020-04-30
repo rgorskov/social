@@ -2,15 +2,15 @@ import React from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-const MyPosts = ({posts, currentText, addPost, updatePostText}) => {
+const MyPosts = ({ posts, currentText, dispatch }) => {
   let newPostRef = React.createRef();
 
   let onAddPostHandler = () => {
-    addPost();
+    dispatch({ type: "ADD_POST" });
   };
 
   let onupdatePostText = () => {
-    updatePostText(newPostRef.current.value);
+    dispatch({ type: "UPDATE_NEW_POST_TEXT", text: newPostRef.current.value });
   };
 
   return (
@@ -18,7 +18,11 @@ const MyPosts = ({posts, currentText, addPost, updatePostText}) => {
       <h1>My posts</h1>
       <div className={style.addPostBlock}>
         <div>
-          <textarea ref={newPostRef} onChange={onupdatePostText} value={currentText} />
+          <textarea
+            ref={newPostRef}
+            onChange={onupdatePostText}
+            value={currentText}
+          />
         </div>
         <div>
           <button onClick={onAddPostHandler}>Add post</button>

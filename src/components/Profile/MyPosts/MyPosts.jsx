@@ -4,14 +4,12 @@ import Post from "./Post/Post";
 import {addPostActionCreator, updateNewPostActionCreator} from "./../../../redux/state";
 
 const MyPosts = ({ posts, currentText, dispatch }) => {
-  let newPostRef = React.createRef();
-
   let onAddPostHandler = () => {
     dispatch(addPostActionCreator());
   };
 
-  let onupdatePostText = () => {
-    dispatch(updateNewPostActionCreator(newPostRef.current.value));
+  let onupdatePostText = (e) => {
+    dispatch(updateNewPostActionCreator(e.target.value));
   };
 
   return (
@@ -20,7 +18,6 @@ const MyPosts = ({ posts, currentText, dispatch }) => {
       <div className={style.addPostBlock}>
         <div>
           <textarea
-            ref={newPostRef}
             onChange={onupdatePostText}
             value={currentText}
           />

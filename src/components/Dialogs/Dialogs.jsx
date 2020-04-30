@@ -6,14 +6,12 @@ import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "./../
 
 
 const Dialogs = ({ data, dispatch }) => {
-  let newMessageRef = React.createRef();
-
   let onSendMessageHandler = () => {
     dispatch(sendMessageActionCreator());
   };
 
-  let onNewMessageChange = () => {
-    dispatch(updateNewMessageTextActionCreator(newMessageRef.current.value));
+  let onNewMessageChange = (e) => {
+    dispatch(updateNewMessageTextActionCreator(e.target.value));
   };
 
   return (
@@ -28,7 +26,6 @@ const Dialogs = ({ data, dispatch }) => {
           <Message id={m.id} text={m.text} key={i} />
         ))}
         <textarea
-          ref={newMessageRef}
           onChange={onNewMessageChange}
           value={data.currentText}
         />

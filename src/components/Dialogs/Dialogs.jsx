@@ -2,19 +2,18 @@ import React from "react";
 import style from "./Dialogs.module.css";
 import UserDialog from "./UserDialog/UserDialog";
 import Message from "./Message/Message";
+import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "./../../redux/state";
+
 
 const Dialogs = ({ data, dispatch }) => {
   let newMessageRef = React.createRef();
 
   let onSendMessageHandler = () => {
-    dispatch({ type: "SEND_MESSAGE" });
+    dispatch(sendMessageActionCreator());
   };
 
   let onNewMessageChange = () => {
-    dispatch({
-      type: "UPDATE_NEW_MESSAGE_TEXT",
-      text: newMessageRef.current.value,
-    });
+    dispatch(updateNewMessageTextActionCreator(newMessageRef.current.value));
   };
 
   return (

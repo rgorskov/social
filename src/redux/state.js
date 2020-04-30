@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD_POST',
+SEND_MESSAGE = 'SEND_MESSAGE',
+UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT',
+UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
+
 let store = {
   _state: {
     profilePage: {
@@ -71,21 +76,35 @@ let store = {
   },
   dispatch(action) {
     switch (action.type) {
-      case "ADD_POST":
+      case ADD_POST:
         this._addPost();
         break;
-      case "SEND_MESSAGE":
+      case SEND_MESSAGE:
         this._sendMessage();
         break;
-      case "UPDATE_NEW_POST_TEXT":
+      case UPDATE_NEW_POST_TEXT:
         this._updateNewPostText(action.text);
         break;
-      case "UPDATE_NEW_MESSAGE_TEXT":
+      case UPDATE_NEW_MESSAGE_TEXT:
         this._updateNewMessageText(action.text);
         break;
       default:
     }
   },
 };
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+
+export const updateNewPostActionCreator = (text) => ({
+  type: UPDATE_NEW_POST_TEXT,
+  text: text,
+});
+
+export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
+
+export const updateNewMessageTextActionCreator = (text) => ({
+  type: UPDATE_NEW_MESSAGE_TEXT,
+  text: text,
+});
 
 export default store;

@@ -1,15 +1,14 @@
 import React from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostActionCreator} from "./../../../redux/profile-reducer";
 
-const MyPosts = ({ posts, currentText, dispatch }) => {
+const MyPosts = ({ posts, currentText, addPost, updateNewPostText }) => {
   let onAddPostHandler = () => {
-    dispatch(addPostActionCreator());
+    addPost();
   };
 
-  let onupdatePostText = (e) => {
-    dispatch(updateNewPostActionCreator(e.target.value));
+  let onUpdatePostText = (e) => {
+    updateNewPostText(e.target.value);
   };
 
   return (
@@ -18,7 +17,7 @@ const MyPosts = ({ posts, currentText, dispatch }) => {
       <div className={style.addPostBlock}>
         <div>
           <textarea
-            onChange={onupdatePostText}
+            onChange={onUpdatePostText}
             value={currentText}
           />
         </div>

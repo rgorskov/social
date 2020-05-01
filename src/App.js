@@ -22,11 +22,11 @@ const App = ({store}) => {
 
       <main className="main">
         <Route
-          render={() => <Profile store={store} />}
+          render={() => <Profile />}
           path="/profile"
         />
         <Route
-          render={() => <DialogsContainer store={store} />}
+          render={() => <DialogsContainer />}
           path="/dialogs"
         />
         <Route render={() => <Settings />} path="/settings" />

@@ -9,7 +9,7 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import { Route } from "react-router-dom";
 
-function App({state, dispatch}) {
+const App = ({state, dispatch}) => {
   return (
     <div className="app-wrapper">
       <header className="header">

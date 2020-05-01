@@ -11,6 +11,7 @@ let initialState = {
 };
 
 const profileReducer = (state = initialState, action) => {
+  state = {...state};
   switch (action.type) {
     case ADD_POST:
       let id = state.posts.reduce((max, x) => Math.max(x.id, max), 0) + 1;

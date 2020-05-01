@@ -15,6 +15,7 @@ let initialState = {
 };
 
 const dialogsReducer = (state = initialState, action) => {
+  state = {...state}
   switch (action.type) {
     case SEND_MESSAGE:
       let id = state.messages.reduce((max, x) => Math.max(x.id, max), 0) + 1;

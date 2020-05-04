@@ -8,6 +8,7 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import { Route } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = ({store}) => {
   return (
@@ -29,6 +30,8 @@ const App = ({store}) => {
           render={() => <DialogsContainer />}
           path="/dialogs"
         />
+
+        <Route render={() => <UsersContainer />} path='/users' />
         <Route render={() => <Settings />} path="/settings" />
         <Route render={() => <Music />} path="/music" />
         <Route render={() => <News />} path="/news" />

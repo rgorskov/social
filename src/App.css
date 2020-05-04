@@ -27,3 +27,29 @@
   grid-area: header;
   background-color: #bbdefb;
 }
+
+.btn {
+  border: none;
+    padding: 10px 15px;
+    line-height: 1;
+    border-radius: 4px;
+    background-color: #2196F3;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.btn:hover {
+  background-color: #1E88E5;;
+}
+
+.btn:active {
+background-color: #1976D2;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, .3);
+
+}

@@ -56,7 +56,7 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const setFollofAC = (userId, follow) => {
+export const setFollow = (userId, follow) => {
   return {
     type: SET_FOLLOW,
     userId,
@@ -64,28 +64,28 @@ export const setFollofAC = (userId, follow) => {
   };
 };
 
-export const setUsersAC = (users) => {
+export const setUsers = (users) => {
   return {
     type: SET_USERS,
     users,
   };
 };
 
-export const setUsersCountAC = (totalUsersCount) => {
+export const setUsersCount = (totalUsersCount) => {
   return {
     type: SET_TOTAL_USERS_COUNT,
     totalUsersCount,
   };
 };
 
-export const setCurrentPageAC = (currentPage) => {
+export const setCurrentPage = (currentPage) => {
   return {
     type: SET_CURRENT_PAGE,
     currentPage,
   };
 };
 
-export const setIsLoadingAC = (isLoading) => {
+export const setIsLoading = (isLoading) => {
   return {
     type: SET_IS_LOADING,
     isLoading,

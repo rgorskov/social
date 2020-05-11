@@ -3,11 +3,11 @@ import React from 'react';
 import * as axios from 'axios';
 import Users from './Users';
 import {
-  setFollofAC,
-  setUsersAC,
-  setCurrentPageAC,
-  setUsersCountAC,
-  setIsLoadingAC,
+  setFollow,
+  setUsers,
+  setCurrentPage,
+  setUsersCount,
+  setIsLoading,
 } from '../../redux/users-reducer';
 // import style from "./Settings.module.css";
 
@@ -61,24 +61,12 @@ const mapsStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setFollow: (userId, follow) => {
-      dispatch(setFollofAC(userId, follow));
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users));
-    },
-    setUsersCount: (totalUsersCount) => {
-      dispatch(setUsersCountAC(totalUsersCount));
-    },
-    setCurrentPage: (currentPage) => {
-      dispatch(setCurrentPageAC(currentPage));
-    },
-    setIsLoading: (isLoading) => {
-      dispatch(setIsLoadingAC(isLoading));
-    },
-  };
+let actionCreators = {
+  setFollow,
+  setUsers,
+  setUsersCount,
+  setCurrentPage,
+  setIsLoading,
 };
 
-export default connect(mapsStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapsStateToProps, actionCreators)(UsersContainer);

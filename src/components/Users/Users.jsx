@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Users.module.css';
 import defaultUserPhoto from '../../assets/images/user-photo.png';
 import Preloader from '../common/Preloader';
+import { NavLink } from 'react-router-dom';
 
 const Users = ({
   totalUsersCount,
@@ -53,7 +54,9 @@ const Users = ({
                 />
               </div>
               <div className={style.info}>
-                <p className={style.name}>{u.name}</p>
+                <p className={style.name}>
+                  <NavLink to={`/profile/${u.id}`}>{u.name}</NavLink>
+                </p>
                 <button
                   className="btn"
                   onClick={() => setFollow(u.id, !u.followed)}

@@ -22,7 +22,7 @@ const App = ({ store }) => {
       </aside>
 
       <main className="main">
-        <Route render={() => <ProfileContainer />} path="/profile" />
+        <Route render={() => <ProfileContainer />} path="/profile/:userId?" />
         <Route render={() => <DialogsContainer />} path="/dialogs" />
 
         <Route render={() => <UsersContainer />} path="/users" />

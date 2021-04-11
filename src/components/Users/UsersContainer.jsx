@@ -8,7 +8,7 @@ import {
   setCurrentPage,
   setUsersCount,
   setIsLoading,
-} from '../../redux/users-reducer';
+} from '../../data/usersReducer';
 // import style from "./Settings.module.css";
 
 class UsersContainer extends React.Component {

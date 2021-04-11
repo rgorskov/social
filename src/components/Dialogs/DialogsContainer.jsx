@@ -1,19 +1,19 @@
 import React from 'react';
-import { sendMessage, updateNewMessageText } from '../../redux/dialogs-reducer';
+import { sendMessage, updateNewMessageText } from '../../data/dialogsReducer';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
-  return {
-    usersDialogs: state.dialogsPage.usersDialogs,
-    messages: state.dialogsPage.messages,
-    currentText: state.dialogsPage.currentText,
-  };
+    return {
+        usersDialogs: state.dialogsPage.usersDialogs,
+        messages: state.dialogsPage.messages,
+        currentText: state.dialogsPage.currentText,
+    };
 };
 
 let actionCreators = {
-  sendMessage,
-  updateNewMessageText,
+    sendMessage,
+    updateNewMessageText,
 };
 
 const DialogsContainer = connect(mapStateToProps, actionCreators)(Dialogs);

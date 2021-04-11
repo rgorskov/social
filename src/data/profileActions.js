@@ -7,9 +7,9 @@ export const updateNewPostText = (text) => ({
   text: text,
 });
 
-export const setUserProfile = (user) => {
+export const setUserProfile = (userProfile) => {
   return {
     type: actionTypes.PROFILE_SET_USER_PROFILE,
-    user,
+    userProfile,
   };
 };

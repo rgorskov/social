@@ -7,7 +7,7 @@ let initialState = {
     { id: 3, message: 'Noice', likesCount: 5 },
   ],
   currentText: '',
-  user: null,
+  userProfile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -35,7 +35,7 @@ const profileReducer = (state = initialState, action) => {
     case actionTypes.PROFILE_SET_USER_PROFILE:
       return {
         ...state,
-        user: action.user,
+        userProfile: action.userProfile,
       };
     default:
       return state;

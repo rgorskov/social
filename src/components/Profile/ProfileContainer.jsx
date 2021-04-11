@@ -32,7 +32,7 @@ const withRoutDataProfileContainer = withRouter(ProfileContainer);
 
 const mapStateToProps = (state) => {
   return {
-    userProfile: state.profilePage.user,
+    userProfile: state.profilePage.userProfile,
   };
 };
 

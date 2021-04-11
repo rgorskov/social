@@ -4,12 +4,11 @@ import * as axios from 'axios';
 import Users from './Users';
 import {
   setFollow,
-  setUsers,
   setCurrentPage,
-  setUsersCount,
   setIsLoading,
-} from '../../data/usersReducer';
-// import style from "./Settings.module.css";
+  setUsers,
+  setUsersCount,
+} from '../../data/usersActions';
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -61,7 +60,7 @@ const mapsStateToProps = (state) => {
   };
 };
 
-let actionCreators = {
+let mapDispatchToProps = {
   setFollow,
   setUsers,
   setUsersCount,
@@ -69,4 +68,4 @@ let actionCreators = {
   setIsLoading,
 };
 
-export default connect(mapsStateToProps, actionCreators)(UsersContainer);
+export default connect(mapsStateToProps, mapDispatchToProps)(UsersContainer);

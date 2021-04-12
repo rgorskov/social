@@ -37,3 +37,10 @@ export const authApi = {
         return response.data;
     },
 };
+
+export const profileApi = {
+    async getUserProfile(userId) {
+        const response = await api.get(`/profile/${userId}`);
+        return response.data;
+    },
+};

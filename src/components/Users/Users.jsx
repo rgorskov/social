@@ -57,7 +57,6 @@ const Users = ({
             </div>
             <div className={style.users}>
                 {users.map((u) => {
-                    debugger;
                     let disabled = followingInProgress.some((id) => id == u.id);
                     return (
                         <div className={style.item} key={u.id}>

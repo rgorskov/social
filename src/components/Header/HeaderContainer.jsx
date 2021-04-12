@@ -6,19 +6,11 @@ import * as axios from 'axios';
 import { authApi } from '../../api/api';
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
+    async componentDidMount() {
         if (!this.props.isAuth) {
-            authApi.checkAuthMe().then((data) => {
-                const { id, email, login } = data.data;
-                this.props.setUserData(id, email, login);
-            });
-            // axios
-            //     .get('https://social-network.samuraijs.com/api/1.0/auth/me', {
-            //         withCredentials: true,
-            //     })
-            //     .then((response) => {
-
-            //     });
+            const authUserData = await authApi.checkAuthMe();
+            const { id, email, login } = authUserData.data;
+            this.props.setUserData(id, email, login);
         }
     }
 

@@ -31,7 +31,8 @@ export const usersApi = {
 };
 
 export const authApi = {
-    checkAuthMe() {
-        return api.get('/auth/me').then((response) => response.data);
+    async checkAuthMe() {
+        let response = await api.get('/auth/me');
+        return response.data;
     },
 };

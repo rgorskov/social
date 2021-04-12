@@ -2,7 +2,6 @@ import React from 'react';
 import style from './Header.module.css';
 
 const Header = ({ isAuth, login }) => {
-    debugger;
     return (
         <div className={style.head}>
             <img

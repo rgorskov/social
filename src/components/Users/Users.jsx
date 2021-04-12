@@ -3,7 +3,7 @@ import style from './Users.module.css';
 import defaultUserPhoto from '../../assets/images/user-photo.png';
 import Preloader from '../common/Preloader';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
+import { usersApi } from '../../api/api';
 
 const Users = ({
     totalUsersCount,
@@ -22,40 +22,24 @@ const Users = ({
     }
 
     const onFollowClick = (userId, follow) => {
-        if (follow) {
-            axios
-                .post(
-                    `https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
-                    {},
-                    {
-                        withCredentials: true,
-                        headers: {
-                            'api-key': 'bbb456ba-076e-44e4-9911-e2153d748cd2',
-                        },
-                    }
-                )
-                .then((response) => {
-                    if (response.data.resultCode == 0) {
-                        setFollow(userId, true);
-                    }
-                });
-        } else {
-            axios
-                .delete(
-                    `https://social-network.samuraijs.com/api/1.0/follow/${userId}`,
-                    {
-                        withCredentials: true,
-                        headers: {
-                            'api-key': 'bbb456ba-076e-44e4-9911-e2153d748cd2',
-                        },
-                    }
-                )
-                .then((response) => {
-                    if (response.data.resultCode == 0) {
-                        setFollow(userId, false);
-                    }
-                });
-        }
+        usersApi.setFollow(userId, follow).then((data) => {
+            if (data.resultCode == 0) {
+                setFollow(userId, follow);
+            }
+        });
+        // if (follow) {
+        //     usersApi.follow(userId).then((data) => {
+        //         if (data.resultCode == 0) {
+        //             setFollow(userId, true);
+        //         }
+        //     });
+        // } else {
+        //     usersApi.unFollow(userId).then((data) => {
+        //         if (data.resultCode == 0) {
+        //             setFollow(userId, false);
+        //         }
+        //     });
+        // }
     };
 
     return (

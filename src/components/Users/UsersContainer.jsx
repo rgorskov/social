@@ -26,7 +26,8 @@ class UsersContainer extends React.Component {
     this.props.setIsLoading(true);
     return axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${currentPage}`,
+        { withCredentials: true }
       )
       .then((response) => {
         this.props.setIsLoading(false);

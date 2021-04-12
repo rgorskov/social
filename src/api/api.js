@@ -30,4 +30,8 @@ export const usersApi = {
     },
 };
 
-export const authApi = {};
+export const authApi = {
+    checkAuthMe() {
+        return api.get('/auth/me').then((response) => response.data);
+    },
+};

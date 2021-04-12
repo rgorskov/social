@@ -13,6 +13,8 @@ const Users = ({
     setFollow,
     users,
     isLoading,
+    followingInProgress,
+    setFollowingInProgress,
 }) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize);
     let pages = Array.from(new Array(pagesCount), (x, i) => i + 1);
@@ -22,29 +24,14 @@ const Users = ({
     }
 
     const onFollowClick = async (userId, follow) => {
-        const setFollowRes = await usersApi.setFollow(userId, follow);
+        setFollowingInProgress(userId, true);
 
+        const setFollowRes = await usersApi.setFollow(userId, follow);
         if (setFollowRes.resultCode == 0) {
             setFollow(userId, follow);
         }
-        // usersApi.setFollow(userId, follow).then((data) => {
-        //     if (data.resultCode == 0) {
-        //         setFollow(userId, follow);
-        //     }
-        // });
-        // if (follow) {
-        //     usersApi.follow(userId).then((data) => {
-        //         if (data.resultCode == 0) {
-        //             setFollow(userId, true);
-        //         }
-        //     });
-        // } else {
-        //     usersApi.unFollow(userId).then((data) => {
-        //         if (data.resultCode == 0) {
-        //             setFollow(userId, false);
-        //         }
-        //     });
-        // }
+
+        setFollowingInProgress(userId, false);
     };
 
     return (
@@ -70,6 +57,8 @@ const Users = ({
             </div>
             <div className={style.users}>
                 {users.map((u) => {
+                    debugger;
+                    let disabled = followingInProgress.some((id) => id == u.id);
                     return (
                         <div className={style.item} key={u.id}>
                             <div className={style.photo}>
@@ -93,6 +82,7 @@ const Users = ({
                                     onClick={() =>
                                         onFollowClick(u.id, !u.followed)
                                     }
+                                    disabled={disabled}
                                 >
                                     {u.followed ? 'Unfollow' : 'Follow'}
                                 </button>

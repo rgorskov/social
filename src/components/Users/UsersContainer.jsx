@@ -7,6 +7,7 @@ import {
     setIsLoading,
     setUsers,
     setUsersCount,
+    setFollowingInProgress,
 } from '../../data/usersActions';
 import { usersApi } from '../../api/api';
 
@@ -42,6 +43,8 @@ class UsersContainer extends React.Component {
                 setFollow={this.props.setFollow}
                 users={this.props.users}
                 isLoading={this.props.isLoading}
+                followingInProgress={this.props.followingInProgress}
+                setFollowingInProgress={this.props.setFollowingInProgress}
             />
         );
     }
@@ -54,6 +57,7 @@ const mapsStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
         isLoading: state.usersPage.isLoading,
+        followingInProgress: state.usersPage.followingInProgress,
     };
 };
 
@@ -63,6 +67,7 @@ let mapDispatchToProps = {
     setUsersCount,
     setCurrentPage,
     setIsLoading,
+    setFollowingInProgress,
 };
 
 export default connect(mapsStateToProps, mapDispatchToProps)(UsersContainer);

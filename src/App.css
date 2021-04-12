@@ -1,55 +1,59 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .app-wrapper {
-  display: grid;
-  grid-template-areas: 
-    "header header"
-    "navbar main";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
-  width: 1200px;
-  margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'navbar main';
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+    width: 1200px;
+    margin: 0 auto;
 }
 
 .main {
-  grid-area: main;
+    grid-area: main;
 }
 
 .navbar {
-  grid-area: navbar;
-  background-color: #bbdefb;
+    grid-area: navbar;
+    background-color: #bbdefb;
 }
 
 .header {
-  grid-area: header;
-  background-color: #bbdefb;
+    grid-area: header;
+    background-color: #bbdefb;
 }
 
 .btn {
-  border: none;
+    border: none;
     padding: 10px 15px;
     line-height: 1;
     border-radius: 4px;
-    background-color: #2196F3;
+    background-color: #2196f3;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.1s ease;
 }
 
-.btn:hover {
-  background-color: #1E88E5;;
+.btn:not([disabled]):hover {
+    background-color: #1e88e5;
 }
 
 .btn:active {
-background-color: #1976D2;
+    background-color: #1976d2;
 }
 
 .btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(33, 150, 243, .3);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
+}
 
+.btn[disabled] {
+    cursor: auto;
+    opacity: 0.5;
 }

@@ -21,12 +21,17 @@ const Users = ({
         return <Preloader />;
     }
 
-    const onFollowClick = (userId, follow) => {
-        usersApi.setFollow(userId, follow).then((data) => {
-            if (data.resultCode == 0) {
-                setFollow(userId, follow);
-            }
-        });
+    const onFollowClick = async (userId, follow) => {
+        const setFollowRes = await usersApi.setFollow(userId, follow);
+
+        if (setFollowRes.resultCode == 0) {
+            setFollow(userId, follow);
+        }
+        // usersApi.setFollow(userId, follow).then((data) => {
+        //     if (data.resultCode == 0) {
+        //         setFollow(userId, follow);
+        //     }
+        // });
         // if (follow) {
         //     usersApi.follow(userId).then((data) => {
         //         if (data.resultCode == 0) {

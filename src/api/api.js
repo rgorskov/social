@@ -9,16 +9,17 @@ const api = axios.create({
 });
 
 export const usersApi = {
-    getAll(page, size) {
-        return api
-            .get(`/users?page=${page}&count=${size}`)
-            .then((response) => response.data);
+    async getAll(page, size) {
+        const users = await api.get(`/users?page=${page}&count=${size}`);
+
+        return users.data;
     },
-    setFollow(userId, follow) {
-        return (follow
+    async setFollow(userId, follow) {
+        const response = await (follow
             ? api.post(`/follow/${userId}`)
-            : api.delete(`/follow/${userId}`)
-        ).then((response) => response.data);
+            : api.delete(`/follow/${userId}`));
+
+        return response.data;
     },
     follow(userId) {
         return api.post(`/follow/${userId}`).then((response) => response.data);

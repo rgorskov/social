@@ -11,27 +11,25 @@ import {
 import { usersApi } from '../../api/api';
 
 class UsersContainer extends React.Component {
-    componentDidMount() {
-        this.requestUsers(this.props.currentPage).then((data) => {
-            this.props.setUsersCount(data.totalCount);
-        });
+    async componentDidMount() {
+        const users = await this.requestUsers(this.props.currentPage);
+        this.props.setUsersCount(users.totalCount);
     }
 
     onPageChange(newPage) {
         this.requestUsers(newPage);
     }
 
-    requestUsers(currentPage) {
+    async requestUsers(currentPage) {
         this.props.setCurrentPage(currentPage);
         this.props.setIsLoading(true);
 
-        return usersApi
-            .getAll(currentPage, this.props.pageSize)
-            .then((data) => {
-                this.props.setIsLoading(false);
-                this.props.setUsers(data.items);
-                return data;
-            });
+        const users = await usersApi.getAll(currentPage, this.props.pageSize);
+
+        this.props.setIsLoading(false);
+        this.props.setUsers(users.items);
+
+        return users;
     }
 
     render() {

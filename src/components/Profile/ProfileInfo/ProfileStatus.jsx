@@ -19,6 +19,12 @@ class Status extends React.Component {
         this.setState({ inputedStatus: e.currentTarget.value });
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.status != this.props.status) {
+            this.setState({ inputedStatus: this.props.status });
+        }
+    }
+
     render() {
         return (
             <div>

@@ -43,4 +43,12 @@ export const profileApi = {
         const response = await api.get(`/profile/${userId}`);
         return response.data;
     },
+    async getStatus(userId) {
+        const response = await api.get(`/profile/status/${userId}`);
+        return response.data;
+    },
+    async updateStatus(status) {
+        const response = await api.put(`/profile/status`, { status });
+        return response.data;
+    },
 };

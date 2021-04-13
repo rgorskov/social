@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import React from 'react';
+import { compose } from 'redux';
 import Users from './Users';
 import { getUsers, followUser } from '../../data/usersThunks';
 import { setCurrentPage } from '../../data/usersActions';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
-import { compose } from 'redux';
 
 class UsersContainer extends React.Component {
     componentDidMount() {

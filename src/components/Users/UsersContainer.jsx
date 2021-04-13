@@ -3,6 +3,7 @@ import React from 'react';
 import Users from './Users';
 import { getUsers, followUser } from '../../data/usersThunks';
 import { setCurrentPage } from '../../data/usersActions';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -51,4 +52,6 @@ let mapDispatchToProps = {
     setCurrentPage,
 };
 
-export default connect(mapsStateToProps, mapDispatchToProps)(UsersContainer);
+const WithAuthRedirect = withAuthRedirect(UsersContainer);
+
+export default connect(mapsStateToProps, mapDispatchToProps)(WithAuthRedirect);

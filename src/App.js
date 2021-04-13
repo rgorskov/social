@@ -10,8 +10,10 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/Login';
+import checkAuth from './hoc/withAuthRedirect';
 
-const App = ({ store }) => {
+const App = () => {
     return (
         <div className="app-wrapper">
             <header className="header">
@@ -33,6 +35,10 @@ const App = ({ store }) => {
                 <Route render={() => <Settings />} path="/settings" />
                 <Route render={() => <Music />} path="/music" />
                 <Route render={() => <News />} path="/news" />
+
+                <Route path="/login">
+                    <Login />
+                </Route>
             </main>
         </div>
     );

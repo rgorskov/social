@@ -4,6 +4,7 @@ import Users from './Users';
 import { getUsers, followUser } from '../../data/usersThunks';
 import { setCurrentPage } from '../../data/usersActions';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -52,6 +53,7 @@ let mapDispatchToProps = {
     setCurrentPage,
 };
 
-const WithAuthRedirect = withAuthRedirect(UsersContainer);
-
-export default connect(mapsStateToProps, mapDispatchToProps)(WithAuthRedirect);
+export default compose(
+    withAuthRedirect,
+    connect(mapsStateToProps, mapDispatchToProps)
+)(UsersContainer);

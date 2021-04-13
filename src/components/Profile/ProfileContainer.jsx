@@ -21,8 +21,6 @@ class ProfileContainer extends React.Component {
     }
 }
 
-const Composed = compose(withAuthRedirect, withRouter)(ProfileContainer);
-
 const mapStateToProps = (state) => {
     return {
         userProfile: state.profilePage.userProfile,
@@ -33,4 +31,8 @@ const mapDispatchToProps = {
     getUserProfile,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Composed);
+export default compose(
+    withAuthRedirect,
+    withRouter,
+    connect(mapStateToProps, mapDispatchToProps)
+)(ProfileContainer);

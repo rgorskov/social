@@ -1,36 +1,21 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import Users from './Users';
-import {
-    setFollow,
-    setCurrentPage,
-    setIsLoading,
-    setUsers,
-    setUsersCount,
-    setFollowingInProgress,
-} from '../../data/usersActions';
-import { usersApi } from '../../api/api';
+import { getUsers, followUser } from '../../data/usersThunks';
+import { setCurrentPage } from '../../data/usersActions';
 
 class UsersContainer extends React.Component {
-    async componentDidMount() {
-        const users = await this.requestUsers(this.props.currentPage);
-        this.props.setUsersCount(users.totalCount);
+    componentDidMount() {
+        this.requestUsers(1);
     }
 
     onPageChange(newPage) {
+        this.props.setCurrentPage(newPage);
         this.requestUsers(newPage);
     }
 
-    async requestUsers(currentPage) {
-        this.props.setCurrentPage(currentPage);
-        this.props.setIsLoading(true);
-
-        const users = await usersApi.getAll(currentPage, this.props.pageSize);
-
-        this.props.setIsLoading(false);
-        this.props.setUsers(users.items);
-
-        return users;
+    requestUsers(currentPage) {
+        this.props.getUsers(currentPage, this.props.pageSize);
     }
 
     render() {
@@ -40,11 +25,10 @@ class UsersContainer extends React.Component {
                 pageSize={this.props.pageSize}
                 currentPage={this.props.currentPage}
                 onPageChange={this.onPageChange.bind(this)}
-                setFollow={this.props.setFollow}
                 users={this.props.users}
                 isLoading={this.props.isLoading}
+                followUser={this.props.followUser}
                 followingInProgress={this.props.followingInProgress}
-                setFollowingInProgress={this.props.setFollowingInProgress}
             />
         );
     }
@@ -62,12 +46,9 @@ const mapsStateToProps = (state) => {
 };
 
 let mapDispatchToProps = {
-    setFollow,
-    setUsers,
-    setUsersCount,
+    followUser,
+    getUsers,
     setCurrentPage,
-    setIsLoading,
-    setFollowingInProgress,
 };
 
 export default connect(mapsStateToProps, mapDispatchToProps)(UsersContainer);

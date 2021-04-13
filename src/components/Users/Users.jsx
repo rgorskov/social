@@ -3,18 +3,16 @@ import style from './Users.module.css';
 import defaultUserPhoto from '../../assets/images/user-photo.png';
 import Preloader from '../common/Preloader';
 import { NavLink } from 'react-router-dom';
-import { usersApi } from '../../api/api';
 
 const Users = ({
     totalUsersCount,
     pageSize,
     currentPage,
     onPageChange,
-    setFollow,
     users,
     isLoading,
+    followUser,
     followingInProgress,
-    setFollowingInProgress,
 }) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize);
     let pages = Array.from(new Array(pagesCount), (x, i) => i + 1);
@@ -23,15 +21,8 @@ const Users = ({
         return <Preloader />;
     }
 
-    const onFollowClick = async (userId, follow) => {
-        setFollowingInProgress(userId, true);
-
-        const setFollowRes = await usersApi.setFollow(userId, follow);
-        if (setFollowRes.resultCode == 0) {
-            setFollow(userId, follow);
-        }
-
-        setFollowingInProgress(userId, false);
+    const onFollowClick = (userId, follow) => {
+        followUser(userId, follow);
     };
 
     return (

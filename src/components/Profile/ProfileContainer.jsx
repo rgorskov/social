@@ -1,17 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './Profile';
-import * as axios from 'axios';
-import { setUserProfile } from '../../data/profileActions';
+import { getUserProfile } from '../../data/profileThunks';
 import { withRouter } from 'react-router-dom';
-import { profileApi } from '../../api/api';
-// import style from "./Profile.module.css";
 
 class ProfileContainer extends React.Component {
-    async componentDidMount() {
+    componentDidMount() {
         const userId = this.props.match.params.userId || 1238;
-        const profile = await profileApi.getUserProfile(userId);
-        this.props.setUserProfile(profile);
+        this.props.getUserProfile(userId);
     }
 
     render() {
@@ -32,7 +28,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    setUserProfile,
+    getUserProfile,
 };
 
 export default connect(

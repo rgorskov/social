@@ -1,6 +1,6 @@
 import { actionTypes } from './constants';
 
-export const setFollow = (userId, follow) => {
+export const setFollowSuccess = (userId, follow) => {
     return {
         type: actionTypes.USERS_SET_FOLLOW,
         userId,

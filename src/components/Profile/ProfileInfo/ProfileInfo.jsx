@@ -1,25 +1,18 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader';
+import Status from './ProfileStatus';
 
 const ProfileInfo = ({ userProfile }) => {
-  if (!userProfile) {
-    return <Preloader />;
-  }
-  return (
-    <div>
-      <div>
-        <img
-          src="https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg"
-          alt=""
-        />
-      </div>
-      <div>
-        <img src={userProfile.photos.large} alt="" />
-        ava + description
-      </div>
-    </div>
-  );
+    if (!userProfile) {
+        return <Preloader />;
+    }
+    return (
+        <div>
+            <img src={userProfile.photos.large} alt="" />
+            <Status text={'Default text'} />
+        </div>
+    );
 };
 
 export default ProfileInfo;

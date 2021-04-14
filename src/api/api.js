@@ -1,5 +1,4 @@
 import * as axios from 'axios';
-import { logout } from '../data/authThunks';
 
 const api = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',

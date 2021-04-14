@@ -20,7 +20,7 @@ class Status extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.status != this.props.status) {
+        if (prevProps.status !== this.props.status) {
             this.setState({ inputedStatus: this.props.status });
         }
     }

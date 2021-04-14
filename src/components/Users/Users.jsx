@@ -30,7 +30,7 @@ const Users = ({
             <div className={style.pagination}>
                 {pages.map((p) => {
                     let className = style.pageNum;
-                    if (currentPage == p) {
+                    if (currentPage === p) {
                         className += ' ' + style.active;
                     }
                     return (
@@ -48,7 +48,9 @@ const Users = ({
             </div>
             <div className={style.users}>
                 {users.map((u) => {
-                    let disabled = followingInProgress.some((id) => id == u.id);
+                    let disabled = followingInProgress.some(
+                        (id) => id === u.id
+                    );
                     return (
                         <div className={style.item} key={u.id}>
                             <div className={style.photo}>

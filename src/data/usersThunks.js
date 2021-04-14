@@ -25,7 +25,7 @@ export const followUser = (userId, follow) => {
         dispatch(setFollowingInProgress(userId, true));
 
         const setFollowRes = await usersApi.setFollow(userId, follow);
-        if (setFollowRes.resultCode == 0) {
+        if (setFollowRes.resultCode === 0) {
             dispatch(setFollowSuccess(userId, follow));
         }
 

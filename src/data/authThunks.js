@@ -6,7 +6,7 @@ export const getAuthUserData = () => {
         const authUserData = await authApi.checkAuthMe();
         if (authUserData.resultCode === 0) {
             const { id, email, login } = authUserData.data;
-            dispatch(setUserData(id, email, login));
+            dispatch(setUserData(id, email, login, true));
         }
     };
 };
@@ -19,6 +19,16 @@ export const login = ({ email, password, rememberMe }) => {
             rememberMe,
         });
         if (loginResult.resultCode === 0) {
+            dispatch(getAuthUserData());
+        }
+    };
+};
+
+export const logout = () => {
+    return async (dispatch) => {
+        const logoutRes = await authApi.logout();
+        if (logoutRes.resultCode === 0) {
+            dispatch(setUserData(null, null, null, false));
         }
     };
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 import { login } from '../../data/authThunks';
 import { required } from '../../utils.js/validators';
@@ -35,11 +37,14 @@ let LoginForm = ({ handleSubmit }) => {
 
 LoginForm = reduxForm({ form: 'login' })(LoginForm);
 
-const Login = () => {
+const Login = ({ isAuth, login }) => {
     const onSubmit = ({ email, password, rememberMe }) => {
-        debugger;
-        login({ email, password, rememberMe })();
+        login({ email, password, rememberMe });
     };
+
+    if (isAuth) {
+        return <Redirect to="/profile" />;
+    }
     return (
         <div>
             <h1>Login</h1>
@@ -48,4 +53,12 @@ const Login = () => {
     );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth,
+});
+
+const mapDispatchToProps = {
+    login,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

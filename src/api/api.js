@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import { logout } from '../data/authThunks';
 
 const api = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
@@ -42,6 +43,10 @@ export const authApi = {
             password,
             rememberMe,
         });
+        return response.data;
+    },
+    async logout() {
+        const response = await api.delete('/auth/login');
         return response.data;
     },
 };

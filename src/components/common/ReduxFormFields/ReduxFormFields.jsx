@@ -2,11 +2,11 @@ import React from 'react';
 import s from './ReduxFormFields.module.css';
 
 const ReduxFormField = ({ element, input, meta }) => {
-    const { touched, error, invalid } = meta;
-    const isError = touched && invalid;
+    const { visited, error, invalid } = meta;
+    const isError = visited && invalid;
     return (
         <div className={isError && s.error}>
-            {React.cloneElement(React.createElement(element), {
+            {React.createElement(element, {
                 className: s.field,
                 ...input,
             })}

@@ -8,7 +8,12 @@ const Header = ({ isAuth, login, logout }) => {
                 src="https://upload.wikimedia.org/wikipedia/commons/b/be/Lineage_OS_Logo.png"
                 alt=""
             />
-            {isAuth && <button onClick={logout}>Log out</button>}
+            {isAuth && (
+                <div>
+                    <div>{login}</div>
+                    <button onClick={logout}>Log out</button>
+                </div>
+            )}
         </div>
     );
 };

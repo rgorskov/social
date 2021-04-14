@@ -10,3 +10,15 @@ export const getAuthUserData = () => {
         }
     };
 };
+
+export const login = ({ email, password, rememberMe }) => {
+    return async (dispatch) => {
+        const loginResult = await authApi.sendLoginData({
+            email,
+            password,
+            rememberMe,
+        });
+        if (loginResult.resultCode === 0) {
+        }
+    };
+};

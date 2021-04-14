@@ -36,6 +36,14 @@ export const authApi = {
         let response = await api.get('/auth/me');
         return response.data;
     },
+    async sendLoginData({ email, password, rememberMe }) {
+        const response = await api.post('/auth/login', {
+            email,
+            password,
+            rememberMe,
+        });
+        return response.data;
+    },
 };
 
 export const profileApi = {

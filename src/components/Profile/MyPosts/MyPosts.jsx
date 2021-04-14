@@ -1,42 +1,44 @@
-import React from "react";
-import style from "./MyPosts.module.css";
-import Post from "./Post/Post";
+import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import style from './MyPosts.module.css';
+import Post from './Post/Post';
 
-const MyPosts = ({ posts, currentText, addPost, updateNewPostText }) => {
-  let onAddPostHandler = () => {
-    addPost();
-  };
+let NewPostForm = ({ handleSubmit }) => {
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <Field component="textarea" name="newPostText" />
+            </div>
+            <div>
+                <button>Add post</button>
+            </div>
+        </form>
+    );
+};
 
-  let onUpdatePostText = (e) => {
-    updateNewPostText(e.target.value);
-  };
+NewPostForm = reduxForm({ form: 'newPostForm' })(NewPostForm);
 
-  return (
-    <div>
-      <h1>My posts</h1>
-      <div className={style.addPostBlock}>
+const MyPosts = ({ posts, addPost }) => {
+    const onAddPostHandler = ({ newPostText }) => {
+        addPost(newPostText);
+    };
+
+    return (
         <div>
-          <textarea
-            onChange={onUpdatePostText}
-            value={currentText}
-          />
+            <h1>My posts</h1>
+            <NewPostForm onSubmit={onAddPostHandler} />
+            <div>
+                {posts.map((p, i) => (
+                    <Post
+                        id={p.id}
+                        message={p.message}
+                        likesCount={p.likesCount}
+                        key={i}
+                    />
+                ))}
+            </div>
         </div>
-        <div>
-          <button onClick={onAddPostHandler}>Add post</button>
-        </div>
-      </div>
-      <div>
-        {posts.map((p, i) => (
-          <Post
-            id={p.id}
-            message={p.message}
-            likesCount={p.likesCount}
-            key={i}
-          />
-        ))}
-      </div>
-    </div>
-  );
+    );
 };
 
 export default MyPosts;

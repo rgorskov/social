@@ -4,12 +4,6 @@ import { getAuthUserData, logout } from '../../data/authThunks';
 import Header from './Header';
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
-        if (!this.props.isAuth) {
-            this.props.getAuthUserData();
-        }
-    }
-
     render() {
         return <Header {...this.props} />;
     }

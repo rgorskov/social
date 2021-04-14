@@ -1,25 +1,23 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 import style from './Dialogs.module.css';
 import UserDialog from './UserDialog/UserDialog';
 import Message from './Message/Message';
-import {
-    sendMessageActionCreator,
-    updateNewMessageTextActionCreator,
-} from '../../data/dialogsReducer';
 
-const Dialogs = ({
-    usersDialogs,
-    messages,
-    currentText,
-    sendMessage,
-    updateNewMessageText,
-}) => {
-    let onSendMessageHandler = () => {
-        sendMessage();
-    };
+let NewMessageForm = ({ handleSubmit }) => {
+    return (
+        <form onSubmit={handleSubmit}>
+            <Field name="message" component="textarea" />
+            <button>Send message</button>
+        </form>
+    );
+};
 
-    let onNewMessageChange = (e) => {
-        updateNewMessageText(e.target.value);
+NewMessageForm = reduxForm({ form: 'newMessageForm' })(NewMessageForm);
+
+const Dialogs = ({ usersDialogs, messages, sendMessage }) => {
+    let onSendMessageHandler = ({ message }) => {
+        sendMessage(message);
     };
 
     return (
@@ -33,8 +31,7 @@ const Dialogs = ({
                 {messages.map((m, i) => (
                     <Message id={m.id} text={m.text} key={i} />
                 ))}
-                <textarea onChange={onNewMessageChange} value={currentText} />
-                <button onClick={onSendMessageHandler}>Send Message</button>
+                <NewMessageForm onSubmit={onSendMessageHandler} />
             </div>
         </div>
     );

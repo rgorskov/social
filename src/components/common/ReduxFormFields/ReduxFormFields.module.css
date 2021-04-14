@@ -1,0 +1,7 @@
+.error .field {
+    border-color: red;
+}
+
+.error .errorMessage {
+    color: red;
+}

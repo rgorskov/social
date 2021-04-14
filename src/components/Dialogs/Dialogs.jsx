@@ -3,11 +3,13 @@ import { Field, reduxForm } from 'redux-form';
 import style from './Dialogs.module.css';
 import UserDialog from './UserDialog/UserDialog';
 import Message from './Message/Message';
+import { required } from '../../utils.js/validators';
+import { Textarea } from '../common/ReduxFormFields/ReduxFormFields';
 
 let NewMessageForm = ({ handleSubmit }) => {
     return (
         <form onSubmit={handleSubmit}>
-            <Field name="message" component="textarea" />
+            <Field name="message" component={Textarea} validate={[required]} />
             <button>Send message</button>
         </form>
     );

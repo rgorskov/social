@@ -5,7 +5,7 @@ const ReduxFormField = ({ element, input, meta, type }) => {
     const { touched, error, invalid } = meta;
     const isError = touched && invalid;
     return (
-        <div className={isError && s.error}>
+        <div className={isError ? s.error : ''}>
             {React.createElement(element, {
                 className: s.field,
                 ...input,

@@ -6,7 +6,7 @@ import { login } from '../../data/authThunks';
 import { required } from '../../utils.js/validators';
 import { Input } from '../common/ReduxFormFields/ReduxFormFields';
 
-let LoginForm = ({ handleSubmit }) => {
+let LoginForm = ({ handleSubmit, error, ...p }) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -28,6 +28,7 @@ let LoginForm = ({ handleSubmit }) => {
             <div>
                 <Field type="checkbox" name="rememberMe" component="input" />
             </div>
+            {error && <span>{error}</span>}
             <div>
                 <button>Log in</button>
             </div>

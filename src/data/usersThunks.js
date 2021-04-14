@@ -1,6 +1,5 @@
 import { usersApi } from '../api/api';
 import {
-    setCurrentPage,
     setIsLoading,
     setUsersCount,
     setUsers,

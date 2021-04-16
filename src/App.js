@@ -17,9 +17,7 @@ import Preloader from './components/common/Preloader/Preloader';
 
 class App extends React.Component {
     componentDidMount() {
-        if (!this.props.initialized) {
-            this.props.initialize();
-        }
+        this.props.initialize();
     }
 
     render() {

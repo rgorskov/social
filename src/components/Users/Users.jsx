@@ -3,6 +3,7 @@ import style from './Users.module.css';
 import defaultUserPhoto from '../../assets/images/user-photo.png';
 import Preloader from '../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
+import Pagination from '../common/Pagination/Pagination';
 
 const Users = ({
     totalUsersCount,
@@ -14,9 +15,6 @@ const Users = ({
     followUser,
     followingInProgress,
 }) => {
-    let pagesCount = Math.ceil(totalUsersCount / pageSize);
-    let pages = Array.from(new Array(pagesCount), (x, i) => i + 1);
-
     if (isLoading) {
         return <Preloader />;
     }
@@ -27,25 +25,13 @@ const Users = ({
 
     return (
         <>
-            <div className={style.pagination}>
-                {pages.map((p) => {
-                    let className = style.pageNum;
-                    if (currentPage === p) {
-                        className += ' ' + style.active;
-                    }
-                    return (
-                        <button
-                            key={p}
-                            className={className}
-                            onClick={() => {
-                                onPageChange(p);
-                            }}
-                        >
-                            {p}
-                        </button>
-                    );
-                })}
-            </div>
+            <Pagination
+                totalItemsCount={totalUsersCount}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onPageChange={onPageChange}
+                portionSize="10"
+            />
             <div className={style.users}>
                 {users.map((u) => {
                     let disabled = followingInProgress.some(

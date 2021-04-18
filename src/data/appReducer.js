@@ -25,7 +25,6 @@ const setInitiaized = () => {
 export const initialize = () => {
     return (dispatch) => {
         dispatch(getAuthUserData()).then(() => {
-            debugger;
             dispatch(setInitiaized());
         });
     };

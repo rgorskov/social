@@ -1,8 +1,12 @@
 import React from 'react';
 import s from './ReduxFormFields.module.css';
 
-const ReduxFormField = ({ element, input, meta, type }) => {
-    const { touched, error, invalid } = meta;
+const ReduxFormField = ({
+    element,
+    input,
+    meta: { touched, error, invalid },
+    type,
+}) => {
     const isError = touched && invalid;
     return (
         <div className={isError ? s.error : ''}>

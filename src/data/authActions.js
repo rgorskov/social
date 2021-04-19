@@ -9,3 +9,8 @@ export const setUserData = (userId, email, login, isAuth) => ({
         isAuth,
     },
 });
+
+export const getCaptchaUrlSuccess = (captchaUrl) => ({
+    type: actionTypes.AUTH_GET_CAPTCHA,
+    payload: { captchaUrl },
+});

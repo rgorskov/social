@@ -6,7 +6,7 @@ import { login } from '../../data/authThunks';
 import { required } from '../../utils.js/validators';
 import { Input } from '../common/ReduxFormFields/ReduxFormFields';
 
-let LoginForm = ({ handleSubmit, error, ...p }) => {
+let LoginForm = ({ captchaUrl, handleSubmit, error, ...p }) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -28,6 +28,21 @@ let LoginForm = ({ handleSubmit, error, ...p }) => {
             <div>
                 <Field type="checkbox" name="rememberMe" component="input" />
             </div>
+            {captchaUrl && (
+                <>
+                    <div>
+                        <img src={captchaUrl} />
+                    </div>
+                    <div>
+                        <Field
+                            type="text"
+                            name="captcha"
+                            component={Input}
+                            validate={[required]}
+                        />
+                    </div>
+                </>
+            )}
             {error && <span>{error}</span>}
             <div>
                 <button>Log in</button>
@@ -38,9 +53,9 @@ let LoginForm = ({ handleSubmit, error, ...p }) => {
 
 LoginForm = reduxForm({ form: 'login' })(LoginForm);
 
-const Login = ({ isAuth, login }) => {
-    const onSubmit = ({ email, password, rememberMe }) => {
-        login({ email, password, rememberMe });
+const Login = ({ isAuth, captchaUrl, login }) => {
+    const onSubmit = ({ email, password, rememberMe, captcha }) => {
+        login({ email, password, rememberMe, captcha });
     };
 
     if (isAuth) {
@@ -49,13 +64,14 @@ const Login = ({ isAuth, login }) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginForm onSubmit={onSubmit} />
+            <LoginForm captchaUrl={captchaUrl} onSubmit={onSubmit} />
         </div>
     );
 };
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl,
 });
 
 const mapDispatchToProps = {

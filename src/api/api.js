@@ -36,16 +36,21 @@ export const authApi = {
         let response = await api.get('/auth/me');
         return response.data;
     },
-    async sendLoginData({ email, password, rememberMe }) {
+    async sendLoginData({ email, password, rememberMe, captcha }) {
         const response = await api.post('/auth/login', {
             email,
             password,
             rememberMe,
+            captcha,
         });
         return response.data;
     },
     async logout() {
         const response = await api.delete('/auth/login');
+        return response.data;
+    },
+    async getCaptchaUrl() {
+        const response = await api.delete('/security/get-captcha-url');
         return response.data;
     },
 };

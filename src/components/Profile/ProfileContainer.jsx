@@ -7,17 +7,27 @@ import {
     getUserProfile,
     getStatus,
     updateStatus,
+    changeProfilePhoto,
 } from '../../data/profileThunks';
-import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 class ProfileContainer extends React.Component {
-    componentDidMount() {
+    loadUserProfile() {
         const userId = this.props.match.params.userId || this.props.authUserId;
         if (userId) {
             this.props.getUserProfile(userId);
             this.props.getStatus(userId);
         } else {
             this.props.history.push('/login');
+        }
+    }
+
+    componentDidMount() {
+        this.loadUserProfile();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.userId != prevProps.match.params.userId) {
+            this.loadUserProfile();
         }
     }
 
@@ -28,6 +38,7 @@ class ProfileContainer extends React.Component {
                     userProfile={this.props.userProfile}
                     updateStatus={this.props.updateStatus}
                     status={this.props.status}
+                    changeProfilePhoto={this.props.changeProfilePhoto}
                 />
             </>
         );
@@ -46,10 +57,10 @@ const mapDispatchToProps = {
     getUserProfile,
     getStatus,
     updateStatus,
+    changeProfilePhoto,
 };
 
 export default compose(
-    // withAuthRedirect,
     withRouter,
     connect(mapStateToProps, mapDispatchToProps)
 )(ProfileContainer);

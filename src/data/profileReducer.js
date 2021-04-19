@@ -35,6 +35,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status,
             };
+        case actionTypes.PROFILE_CHANGE_PHOTO:
+            return {
+                ...state,
+                userProfile: { ...state.userProfile, photos: action.photos },
+            };
         default:
             return state;
     }

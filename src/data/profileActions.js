@@ -15,3 +15,10 @@ export const setStatus = (status) => {
         status,
     };
 };
+
+export const changeProfilePhotoSuccess = (photos) => {
+    return {
+        type: actionTypes.PROFILE_CHANGE_PHOTO,
+        photos,
+    };
+};

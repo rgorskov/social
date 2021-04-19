@@ -1,4 +1,8 @@
-import { setStatus, setUserProfile } from './profileActions';
+import {
+    changeProfilePhotoSuccess,
+    setStatus,
+    setUserProfile,
+} from './profileActions';
 import { profileApi } from '../api/api';
 
 export const getUserProfile = (userId) => {
@@ -20,6 +24,16 @@ export const updateStatus = (status) => {
         const data = await profileApi.updateStatus(status);
         if (data.resultCode === 0) {
             dispatch(setStatus(status));
+        }
+    };
+};
+
+export const changeProfilePhoto = (photo) => {
+    return async (dispatch) => {
+        const data = await profileApi.sendPhoto(photo);
+
+        if (data.resultCode === 0) {
+            dispatch(changeProfilePhotoSuccess(data.data.photos));
         }
     };
 };

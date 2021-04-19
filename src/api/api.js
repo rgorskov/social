@@ -63,4 +63,14 @@ export const profileApi = {
         const response = await api.put(`/profile/status`, { status });
         return response.data;
     },
+    async sendPhoto(photo) {
+        const formData = new FormData();
+        formData.append('image', photo);
+        const response = await api.put('/profile/photo', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+        return response.data;
+    },
 };

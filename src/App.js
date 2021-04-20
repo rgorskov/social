@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Redirect, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Settings from './components/Settings/Settings';
@@ -36,6 +36,8 @@ class App extends React.Component {
                 </aside>
 
                 <main className="main">
+                    <Redirect from="/" to="/profile" />
+
                     <Route
                         render={() => <ProfileContainer />}
                         path="/profile/:userId?"
